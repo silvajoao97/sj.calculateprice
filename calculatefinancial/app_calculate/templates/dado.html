@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Calculo de Coeficiente</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+    <body>
+        <header>
+            <h2> Calculo de Portabilidade</h2>
+        </header>
+<br>
+<br>
+            <div class="container_principal"> 
+
+
+                    <div class="container2">
+                        <h1>Calculo de Coeficiente</h1>
+                    </div>
+
+                    <form method="post" action="#render1">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <br>
+                        <button type="submit">Calcular</button>
+                    </form>
+
+
+                    {% if pmt %}
+                    <div class="container2">
+                        <h1>Resultado da PMT</h1>
+                    </div>
+                    <section id="render1">
+                        
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>PMT</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for pm in pmt %}
+                                    <tr>
+                                        <td>{{ pm.0 }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        {% endif %}
+                    </section>
+
+                    <br>
+                    <br>
+                    
+                    
+                    <div class="container2">
+                        <h1>Tabela Price</h1>
+                    </div>
+
+                    <div class="container">
+                        
+                        <table id="result-table">    
+                            <thead>
+                    
+                    
+                                <tr>
+                                    <th>Nr Parcelas</th>
+                                    <th>Data de Desconto</th>
+                                    <th>Taxa Mensal %</th>
+                                    <th>PMT Mensal R$</th>                
+                                    <th>PMT Principal R$</th>
+                                    <th>Juros R$</th>
+                    
+                                </tr>
+                                {% for resultado in resultados %}
+                                <tr>
+                                    <td>{{ resultado.0 }}</td>
+                                    <td>{{ resultado.1 }}</td>
+                                    <td>{{ resultado.2 }}</td>
+                                    <td>{{ resultado.3 }}</td>
+                                    <td>{{ resultado.4 }}</td>
+                                    <td>{{ resultado.5 }}</td>
+                                </tr>
+                                {% endfor %}
+                                <div class="total-registros"> 
+                                    <p><font color="red">Toda Simulação é válida por 30 segundos ...</font></p>
+                                    <p>Total de Parcelas: {{ resultados.paginator.count }}</p>
+                                </div>
+                        </thead>
+                        </table>
+                    
+                    
+                    
+
+
+                        <div class="pagination" >
+                            <ul class="pagination">
+                        <ul class="pagination">
+                            {% if resultados.has_previous %}
+                            <li class="page-item"><a class="page-link" href="?q={{ query }}&page={{ resultados.previous_page_number }}#render1">&laquo; Anterior</a></li>
+                        {% endif %}
+                        <li class="page-item {% if not resultados.has_previous %}active{% endif %}"><a class="page-link" href="?q={{ query }}&page={{ resultados.number }}#render1">{{ resultados.number }}</a></li>
+                        {% if resultados.has_next %}
+                            <li class="page-item" ><a class="page-link" href="?q={{ query }}&page={{ resultados.next_page_number }}#render1">Próxima &raquo;</a></li>
+                        {% endif %}
+                            </ul>
+                        </div>
+                </div>
+            </div>
+            <br>
+                    <footer>
+                        <p>&copy; Pagina Para Calculo de Portabilidade</p>
+                    </footer>
+            
+    </body>
+</html>
+
