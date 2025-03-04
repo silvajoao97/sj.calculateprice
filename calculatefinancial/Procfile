@@ -1,1 +1,1 @@
-web: gunicorn app_calculate.wsgi --log-file -
+web: gunicorn calculatefinancial.wsgi --log-file -
