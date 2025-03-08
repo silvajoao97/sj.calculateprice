@@ -14,5 +14,5 @@ from dj_static import Cling
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'calculatefinancial.settings')
 
-application = get_wsgi_application()
+aplication = Cling(get_wsgi_application()) 
 
