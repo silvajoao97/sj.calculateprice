@@ -10,7 +10,9 @@ https://docs.djangoproject.com/en/5.1/howto/deployment/wsgi/
 import os
 
 from django.core.wsgi import get_wsgi_application
+from dj_static import Cling
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'app_calculate.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'calculatefinancial.settings')
 
 application = get_wsgi_application()
+

@@ -1,23 +1,2 @@
-asgiref==3.8.1
-blinker==1.8.2
-click==8.1.7
-colorama==0.4.6
-distlib==0.3.9
-Django==5.0.10
-django-mssql-backend
-filelock==3.16.1
-Flask==3.0.3
-gunicorn==23.0.0
-itsdangerous==2.2.0
-Jinja2==3.1.4
-MarkupSafe==2.1.5
-mssql-django==1.5
-packaging==24.2
-platformdirs==4.3.6
-pyodbc==5.2.0
-pytz==2024.2
-setuptools==75.2.0
-sqlparse==0.5.1
-tzdata==2024.2
-virtualenv==20.27.0
-Werkzeug==3.0.3
+-r requirements-dev.txt
+gunicorn

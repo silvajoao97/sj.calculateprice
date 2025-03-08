@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
+import environ
+import dj_database_url
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-%h5rv*-^w#a4(5^f%s^hf3cwkfbp#bpmvb(z#39ee^grm*qbu9'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['spcalculatecoeficiente-7b73c117e8ad.herokuapp.com']
 
 
 # Application definition
@@ -74,19 +78,14 @@ WSGI_APPLICATION = 'calculatefinancial.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = { 
-    'default': { 
-        'ENGINE': 'mssql', 
-        'NAME': 'CONTRACT_CALCULATE', 
-        'USER': 'silvajoao', 
-        'PASSWORD': 'admin1', 
-        'HOST': 'JOAOSILVA\\SQLEXPRESS', 
-        'PORT': '', 
-        'OPTIONS': { 
-            'driver': 'ODBC Driver 17 for SQL Server', 
-        }, 
-    } 
-} 
+env = environ.Env()
+environ.Env.read_env()
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default=env('DATABASE_URL')
+    )
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -124,6 +123,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+                           
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
