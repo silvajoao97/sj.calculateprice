@@ -1,2 +1,1 @@
-release: ./install_odbc.sh
-web: gunicorn calculatefinancial.wsgi --log-file -
+web: ./install_odbc.sh && gunicorn calculatefinancial.wsgi --log-file -
