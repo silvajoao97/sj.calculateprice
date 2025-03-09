@@ -83,9 +83,17 @@ env = environ.Env()
 environ.Env.read_env()
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default=env('DATABASE_URL')
-    )
+    'default': {
+        'ENGINE': 'mssql',
+        'NAME': 'dokv9ucwd66if70',
+        'USER': 'u0htfm5dxq4d6y0',
+        'PASSWORD': 'an!!yCnfW%!COCaxionxj&AvJ',
+        'HOST': 'eu-az-sql-serv1.database.windows.net',
+        'PORT': '1433',
+        'OPTIONS': {
+            'driver': 'ODBC Driver 17 for SQL Server',
+        },
+    }
 }
 
 # Password validation
