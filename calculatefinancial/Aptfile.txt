@@ -1,2 +1,2 @@
 unixodbc
-unixodbc-dev
+msodbcsql17
