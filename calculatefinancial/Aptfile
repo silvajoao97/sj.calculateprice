@@ -3,4 +3,3 @@ unixodbc-dev
 curl
 apt-transport-https
 gnupg
-./install_odbc.sh
