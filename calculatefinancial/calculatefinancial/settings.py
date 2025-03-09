@@ -91,7 +91,7 @@ DATABASES = {
         'HOST': 'eu-az-sql-serv1.database.windows.net',
         'PORT': '1433',
         'OPTIONS': {
-            'driver': 'ODBC Driver 17 for SQL Server',
+            'driver': '/app/.apt/usr/lib/x86_64-linux-gnu/odbc/libmsodbcsql-17.so',
         },
     }
 }
